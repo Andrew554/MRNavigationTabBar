@@ -16,6 +16,7 @@
 		01046F181D279C940076DA53 /* LabelNavigationControllerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01046F171D279C940076DA53 /* LabelNavigationControllerUITests.m */; };
 		01046F271D279CE00076DA53 /* MRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01046F261D279CE00076DA53 /* MRHomeViewController.m */; };
 		01046F2A1D279F860076DA53 /* MROneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01046F291D279F860076DA53 /* MROneViewController.m */; };
+		01046F2D1D27D3EF0076DA53 /* MRNavigationLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 01046F2C1D27D3EF0076DA53 /* MRNavigationLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		01046F261D279CE00076DA53 /* MRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRHomeViewController.m; sourceTree = "<group>"; };
 		01046F281D279F860076DA53 /* MROneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MROneViewController.h; sourceTree = "<group>"; };
 		01046F291D279F860076DA53 /* MROneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MROneViewController.m; sourceTree = "<group>"; };
+		01046F2B1D27D3EF0076DA53 /* MRNavigationLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRNavigationLabel.h; sourceTree = "<group>"; };
+		01046F2C1D27D3EF0076DA53 /* MRNavigationLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRNavigationLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +111,8 @@
 				01046EF61D279C940076DA53 /* AppDelegate.m */,
 				01046F251D279CE00076DA53 /* MRHomeViewController.h */,
 				01046F261D279CE00076DA53 /* MRHomeViewController.m */,
+				01046F2B1D27D3EF0076DA53 /* MRNavigationLabel.h */,
+				01046F2C1D27D3EF0076DA53 /* MRNavigationLabel.m */,
 				01046F281D279F860076DA53 /* MROneViewController.h */,
 				01046F291D279F860076DA53 /* MROneViewController.m */,
 				01046EF21D279C940076DA53 /* Supporting Files */,
@@ -277,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01046F2A1D279F860076DA53 /* MROneViewController.m in Sources */,
+				01046F2D1D27D3EF0076DA53 /* MRNavigationLabel.m in Sources */,
 				01046F271D279CE00076DA53 /* MRHomeViewController.m in Sources */,
 				01046EF71D279C940076DA53 /* AppDelegate.m in Sources */,
 				01046EF41D279C940076DA53 /* main.m in Sources */,

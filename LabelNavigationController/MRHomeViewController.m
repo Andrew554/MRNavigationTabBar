@@ -8,6 +8,7 @@
 
 #import "MRHomeViewController.h"
 #import "MROneViewController.h"
+#import "MRNavigationLabel.h"
 
 #define MRScreenW [UIScreen mainScreen].bounds.size.width;
 #define MRScreenH [UIScreen mainScreen].bounds.size.height;
@@ -17,11 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *titleScrollView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *contentScrollView;
-
-/**
- *  选中按钮
- */
-@property (nonatomic, weak) UIButton *selectedBtn;
 
 @end
 
@@ -73,7 +69,7 @@
     [self addChildViewController:vc6];
     
     MROneViewController *vc7 = [[MROneViewController alloc] init];
-    vc7.title = @"Html";
+    vc7.title = @"HTML";
     [self addChildViewController:vc7];
     
     CGSize size = [UIScreen mainScreen].bounds.size;
@@ -84,6 +80,7 @@
     
     self.contentScrollView.bounces = NO;
 }
+
 
 /**
  *  添加导航标签栏
@@ -96,23 +93,23 @@
     
     for (NSInteger i = 0; i < self.childViewControllers.count; i++) {
         
-        UIButton *navigationLabel = [[UIButton alloc] init];
+        MRNavigationLabel *navigationLabel = [[MRNavigationLabel alloc] init];
         
         navigationLabel.tag = i;
         
         navigationLabel.frame = CGRectMake(i * width, 0, width, height);
         
-        [navigationLabel setTitle:[self.childViewControllers[i] title] forState:UIControlStateNormal];
+        navigationLabel.text = [self.childViewControllers[i] title];
         
-        [navigationLabel setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
         
-        [navigationLabel setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-        
-        navigationLabel.backgroundColor = [UIColor colorWithRed:arc4random_uniform(100)/100.0 green:arc4random_uniform(100)/100.0 blue:arc4random_uniform(100)/100.0 alpha:1.0];
-        
-        [navigationLabel addTarget:self action:@selector(tap:) forControlEvents:UIControlEventTouchUpInside];
+        [navigationLabel addGestureRecognizer:tap];
         
         [self.titleScrollView addSubview:navigationLabel];
+        
+        if(i == 0) {    // 第一个Label标签
+            navigationLabel.scale = 1.0;
+        }
     }
     
     self.titleScrollView.contentSize = CGSizeMake(width * self.childViewControllers.count, height);
@@ -124,13 +121,9 @@
 /**
  *  手势事件
  */
-- (void)tap:(UIButton *)btn {
+- (void)tap:(UITapGestureRecognizer *)tap {
     
-    NSLog(@"bool %i", btn.selected);
-    
-    self.selectedBtn.selected = NO;
-    
-    NSInteger index = btn.tag;
+    NSInteger index = tap.view.tag;
     
     // 定位到指定位置
     CGPoint offset = self.contentScrollView.contentOffset;
@@ -138,10 +131,6 @@
     offset.x = index * MRScreenW;
     
     [self.contentScrollView setContentOffset:offset animated:YES];
-    
-    btn.selected = YES;
-    
-    self.selectedBtn = btn;
 }
 
 
@@ -161,7 +150,7 @@
     NSInteger index = offsetX / width;
     
     // 让对应的顶部标题居中显示
-    UIButton *label = self.titleScrollView.subviews[index];
+    MRNavigationLabel *label = self.titleScrollView.subviews[index];
     CGPoint titleOffsetX = self.titleScrollView.contentOffset;
     titleOffsetX.x = label.center.x - width/2;
     // 左边偏移量边界
@@ -205,6 +194,24 @@
  */
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
+    CGFloat scale = scrollView.contentOffset.x / scrollView.frame.size.width;
+    
+    // 获取需要操作的的左边的Label
+    NSInteger leftIndex = scale;
+    MRNavigationLabel *leftLabel = self.titleScrollView.subviews[leftIndex];
+    
+    // 获取需要操作的右边的Label
+    NSInteger rightIndex = scale + 1;
+    MRNavigationLabel *rightLabel = (rightIndex == self.titleScrollView.subviews.count) ?  nil : self.titleScrollView.subviews[rightIndex];
+    
+    // 右边的比例
+    CGFloat rightScale = scale - leftIndex;
+    // 左边比例
+    CGFloat leftScale = 1- rightScale;
+    
+    // 设置Label的比例
+    leftLabel.scale = leftScale;
+    rightLabel.scale = rightScale;
 }
 
 @end
