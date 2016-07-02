@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Da1-BE-9S5">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="hNa-8Q-J4c">
+            <objects>
+                <navigationController id="Da1-BE-9S5" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mhv-lM-EKA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ewM-t3-H3r"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cxv-pw-DoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-663" y="246.99999999999997"/>
+        </scene>
+        <!--Language-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MRHomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ym2-LB-DLy" userLabel="titleScrollView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="CW4-RE-Wf2"/>
+                                </constraints>
+                            </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chI-R8-gYN" userLabel="contentScrollView">
+                                <rect key="frame" x="0.0" y="94" width="600" height="506"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="vI2-wu-0FF"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ym2-LB-DLy" secondAttribute="trailing" id="2ov-0Y-7Iq"/>
+                            <constraint firstItem="chI-R8-gYN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6RG-WR-aUE"/>
+                            <constraint firstItem="chI-R8-gYN" firstAttribute="top" secondItem="ym2-LB-DLy" secondAttribute="bottom" id="Gku-Ng-9kJ"/>
+                            <constraint firstItem="ym2-LB-DLy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SWh-1F-0ZB"/>
+                            <constraint firstAttribute="trailing" secondItem="chI-R8-gYN" secondAttribute="trailing" id="hjb-az-zMH"/>
+                            <constraint firstItem="ym2-LB-DLy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="64" id="o9C-rS-tPE"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="chI-R8-gYN" secondAttribute="bottom" id="r5W-5a-wgu"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Language" id="01f-SK-Yvb"/>
+                    <connections>
+                        <outlet property="contentScrollView" destination="chI-R8-gYN" id="a1f-9d-KB8"/>
+                        <outlet property="titleScrollView" destination="ym2-LB-DLy" id="PbO-At-ouv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86" y="246.99999999999997"/>
+        </scene>
+    </scenes>
+</document>
