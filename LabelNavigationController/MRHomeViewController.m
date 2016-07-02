@@ -74,7 +74,7 @@
     
     CGSize size = [UIScreen mainScreen].bounds.size;
     
-    self.contentScrollView.contentSize = CGSizeMake(self.childViewControllers.count * size.width, size.height);
+    self.contentScrollView.contentSize = CGSizeMake(self.childViewControllers.count * size.width, self.contentScrollView.frame.size.height - self.titleScrollView.frame.size.height);
     
     self.contentScrollView.pagingEnabled = YES;
     
@@ -157,11 +157,16 @@
     if(titleOffsetX.x < 0) {
         titleOffsetX.x = 0;
     }
-    
+    // 最大的偏移量
     CGFloat maxOffsetX = self.titleScrollView.contentSize.width - width;
     // 右边偏移量边界
     if(titleOffsetX.x > maxOffsetX) {
         titleOffsetX.x = maxOffsetX;
+    }
+    
+    // 取出所有的Lable, 设置缩放比例为0
+    for (MRNavigationLabel *lab in self.titleScrollView.subviews) {
+        if(lab != label) lab.scale = 0;
     }
     
     // 修改偏移量
